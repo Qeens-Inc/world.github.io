@@ -24,6 +24,11 @@ locations=["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua an
                 "US", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "West Bank and Gaza",
                 "Western Sahara", "Yemen", "Zambia", "Zimbabwe"]
 
+apis=[{'name':'Total','url':'api/total','data':'Returns all total cases in the world'},
+                    {'name':'Current','url':'api/cases','data':'Returns all cases per country'},
+                    {'name':'Country','url':'api/{country name}','data':'Returns Specific country'},
+                    {'name':'Countries','url':'api/countries','data':'Returns list of all countries affected'}]
+
 data=[]
 
 @app.route('/')
@@ -41,7 +46,7 @@ def countries():
   try:
     request=requests.get('https://covid2019-api.herokuapp.com/v2/current')
   except requests.exceptions.RequestException:
-    return render_template('error.html',val=request.status_code)
+    return render_template('error.html',val=404)
   if not request.status_code==200:
     return render_template('error.html',val=request.status_code)
   else: 
@@ -57,12 +62,41 @@ def countries():
 
 
 @app.route('/api')
-def api(country):
-  pass
+def api():
+  return render_template('api.html',api='active',apis=apis)
+
+@app.route('/api/total')
+def total():
+  return req('v2/total')
+
+@app.route('/api/countries')
+def _countries():
+  return req('countries')
+
+@app.route('/api/cases')
+def cases():
+  return req('v2/current')
+
+@app.route('/api/<string:country>')
+def _country(country):
+  if country[0].upper()+country[1:].lower() in locations:
+    return req(f'v2/country/{country.lower()}')
+  else:
+    return jsonify({'Error':'No such country'})
 
 
 
-   
+def req(url):
+  try:
+    request=requests.get('https://covid2019-api.herokuapp.com/'+url)
+  except requests.exceptions.RequestException:
+    return jsonify({'stat':"Error"})
+  if request.status_code==200:
+    return request.text
+  else:
+    return jsonify({'stat':"Error"})
+
+
 
 if __name__=='__main__':
   app.run(debug=True,port=4000)
