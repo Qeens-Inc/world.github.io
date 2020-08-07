@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{url_for('static',filename='styles/error.css')}}" /> {% endblock %}
+{% block script %}
+<script src="{{url_for('static',filename='scripts/countries.js')}}"></script>
+{% endblock %}
+
+{% block title %}All Country{% endblock %}
+
+{% block body %}
+<center>
+  <div class="container" id="main_div">
+  <div class='jumbotron error'>
+    <center>
+      <h1>{{val}}</h1>
+    </center>
+    <p class="hd">Couldn't complete request.</p>
+    <p class="hd">Please click button below to reload...</p>
+    <a class='rl' href="{{url_for('countries')}}"><button class="btn btn-secondary btn-sm">Reload</button></a>
+  </div>
+   
+  </div>
+</center>
+{% endblock %}

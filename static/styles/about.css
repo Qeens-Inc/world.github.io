@@ -1,0 +1,26 @@
+.hd1{
+    font-size: 7vw;
+}
+.hd4{
+    font-size: 4.5vw;
+}
+
+.imgs{
+    min-width: 90%;
+    width: 95%;
+    margin-bottom: 2vw;
+}
+
+.hd3{
+    font-size: 5vw;
+}
+
+#nfoot{
+    padding: 2.5vw;
+}
+
+#foot{
+    background: lightskyblue;
+    border-radius: 2vw 2vw 2vw 2vw;
+    margin-bottom: 1vw;
+}

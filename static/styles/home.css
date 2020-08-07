@@ -1,0 +1,15 @@
+.divcont{
+    width: 90%;
+    margin-top:2vw;
+    margin-bottom:2vw;
+}
+
+.carouseltext{
+    font-size: 5vw;
+}
+
+.caroimg{
+    height:100vw; 
+    max-height: 100vw;
+    min-height: 100vw;
+}

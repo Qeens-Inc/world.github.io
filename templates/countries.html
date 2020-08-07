@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{url_for('static',filename='styles/countries.css')}}" /> {% endblock %}
+{% block script %}
+<script src="{{url_for('static',filename='scripts/countries.js')}}"></script>
+{% endblock %}
+
+{% block title %}All Country{% endblock %}
+
+{% block search %}
+<form class="form-inline my-2 my-sm-0">
+  <input class="form-control mr-sm-2" id="search" type="search" placeholder="Enter Country Name." aria-label="Search"
+    autocomplete="no">
+</form>
+{% endblock %}
+
+{% block body %}
+<center>
+  <div class="container" id="main_div">
+    {% for data in datas %}
+    <div class="jumbotron cont">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <h1 class="navbar-brand hd1">{{data['location']}}</h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#{{data['location']}}"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="{{data['location']}}">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active"><b>Confirmed</b> : {{data['confirmed']}}</span></a>
+            <a class="nav-item nav-link active"><b>Active</b> : {{data['active']}}</a>
+            <a class="nav-item nav-link active"><b>Recovered</b> : {{data['recovered']}}</a>
+            <a class="nav-item nav-link active"><b>Death</b> : {{data['deaths']}}</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    {% endfor %}
+  </div>
+</center>
+{% endblock %}

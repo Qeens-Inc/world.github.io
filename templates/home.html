@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link rel="stylesheet" href="{{url_for('static',filename='styles/home.css')}}" /> {% endblock %}
+
+{% block title %} Home{% endblock %}
+
+{% block body %}
+
+<!-----slideshow-->
+<div id='slides' class='carousel slide' data ride='carousel'>
+    <ul class='carousel-indicators'>
+        <li data-target='#slides' data-slide-to='0' class='active'></li>
+        <li data-target='#slides' data-slide-to='1'></li>
+    </ul>
+    <center>
+        <div class='carousel-inner divcont'>
+            <div class='carousel-item active'>
+                <img src="{{url_for('static',filename='imgs/img6.jpeg')}}" class="img-fluid rounded caroimg">
+                <div class='carousel-caption'>
+                    <h3 class='carouseltext'>Stay At Home.</h3>
+
+                    <a href="{{url_for('about')}}"><button type='button' class='btn btn-outline-light btn-lg'
+                            style='margin-top:2vw;'>More On
+                            Covid-19</button></a>
+                    <br>
+                </div>
+            </div>
+            <div class='carousel-item'>
+                <img src="{{url_for('static',filename='imgs/img7.jpeg')}}" class="img-fluid rounded caroimg">
+                <div class='carousel-caption'>
+                    <h3 class='carouseltext'>Maintain Social Distancing.</h3>
+
+                    <a href="{{url_for('about')}}"><button type='button' class='btn btn-primary btn-lg'>More On
+                            Covid-19</button></a>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </center>
+</div>
+
+<!----------jumbotron--->
+<div class="container-fluid">
+    <center>
+        <div class='row jumbotron divcont'>
+            <div class='col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10'>
+                <p class='hd'>
+                    This website shows covid-19 statistics so as to enable you keep up with the current cases and
+                    recoveries
+                    around you.
+                </p>
+            </div>
+            <div class='col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2'>
+                <a href='{{url_for("about")}}'><button type='button' class='btn btn-primary btn-lg'>More On Covid-19</button></a>
+            </div>
+        </div>
+    </center>
+</div>
+
+
+
+<!------What Site For----->
+
+<div class='container-fluid padding'>
+    <center>
+        <h3>
+            What The Site Is For:
+        </h3>
+        <p style="text-align:center;" class="hd foot"> This a site which gives updated statistics of the covid-19 virus all around the
+            world.
+            Including number of deaths, infected and recovered Of every country in the world in an easy to
+            understand layout.
+            The Statistics to be given include the number of deaths, infected persons and number of recoveries
+            in
+            every country of the world.
+            The purpose of this site is to keep you up to date with covid-19 cases around you, we present this
+            information to you in an easy to understand layout.
+        </p>
+    </center>
+</div>
+
+{% endblock %}
